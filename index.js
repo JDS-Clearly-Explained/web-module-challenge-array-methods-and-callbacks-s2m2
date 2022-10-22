@@ -38,7 +38,7 @@ Use getFinals to do the following:
 
 function getFinals(fifaData) {
     return fifaData.filter((item) => item.Stage === "Final");
- }
+}
 
 
 
@@ -51,9 +51,15 @@ Use the higher-order function called getYears to do the following:
 function getYears(fifaData, getFinals) {
     const finals = getFinals(fifaData);
     const years = [];
-    for (let i = 0; i < finals.length; i++) {
-        years.push(finals[i].Year);
-    }
+
+    //option 1
+    // for (let i = 0; i < finals.length; i++) {
+    //     years.push(finals[i].Year);
+    // }
+
+    finals.filter((item) => {
+        years.push(item.Year);
+    });
     return years;
 }
 
@@ -70,13 +76,23 @@ Use the higher-order function getWinners to do the following:
 function getWinners(fifaData, getFinals) {
     const finals = getFinals(fifaData);
     const winners = [];
-    for (let i = 0; i < finals.length; i++) {
-        if (finals[i]["Home Team Goals"] > finals[i]["Away Team Goals"]) {
-            winners.push(finals[i]["Home Team Name"]);
+
+    //alternative solution:
+    // for (let i = 0; i < finals.length; i++) {
+    //     if (finals[i]["Home Team Goals"] > finals[i]["Away Team Goals"]) {
+    //         winners.push(finals[i]["Home Team Name"]);
+    //     } else {
+    //         winners.push(finals[i]["Away Team Name"]);
+    //     }
+    // }
+
+    finals.filter((item) => {
+        if (item["Home Team Goals"] > item["Away Team Goals"]) {
+            winners.push(item["Home Team Name"]);
         } else {
-            winners.push(finals[i]["Away Team Name"]);
+            winners.push(item["Away Team Name"]);
         }
-    }
+    });
     return winners;
 }
 
