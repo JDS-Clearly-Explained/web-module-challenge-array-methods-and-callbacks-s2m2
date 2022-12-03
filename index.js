@@ -8,6 +8,9 @@ Practice accessing data by console.log-ing the following pieces of data note.
 💡 HINT: You may want to filter the data first 😉*/
 
 //(a) Home Team name for 2014 world cup final
+const filteredData = fifaData.filter((item) => {
+    return item.Year === 2014 && item.Stage === "Final";
+
 
 console.log(fifaData.filter((item) => item.Year === 2014 && item.Stage === "Final")[0]["Home Team Name"]);
 
@@ -37,6 +40,7 @@ Use getFinals to do the following:
 */
 
 function getFinals(fifaData) {
+    //use .filter() method to return an array of objects with the data of the teams that made it to the final stage by checking if the stage key is equal to "Final"
     return fifaData.filter((item) => item.Stage === "Final");
 }
 
